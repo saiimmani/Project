@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Defining the structure to store book details
+struct library {
+    char book_name[100];
+    char author_name[100];
+    float cost;
+    int no_of_pages;
+};
+
+int main() {
+    struct library lib[100]; // Array to store multiple books
+    int i = 0, j, count = 0;
+
+    while (1) {
+        printf("\n1. Add Book details\n");
+        printf("2. Display the list of books and their details\n");
+        printf("3. Display the total number of books in the library\n");
+        printf("4. Update book details\n");
+        printf("5. Exit\n");
+        printf("Enter the number: ");
+        scanf("%d", &j);
+
+        switch (j) {
+            case 1:
+                printf("\nEnter the book name: ");
+                scanf(" %[^\n]s", lib[i].book_name);
+                printf("Enter the author name: ");
+                scanf(" %[^\n]s", lib[i].author_name);
+                printf("Enter the number of pages: ");
+                scanf("%d", &lib[i].no_of_pages);
+                printf("Enter the cost of the book: ");
+                scanf("%f", &lib[i].cost);
+                count++;
+                i++;
+                break;
+            case 2:
+                if (count == 0) {
+                    printf("\nThere are no books stored!\n");
+                } else {
+                    for (int k = 0; k < count; k++) {
+                        printf("\nBook Name: %s\n", lib[k].book_name);
+                        printf("Author Name: %s\n", lib[k].author_name);
+                        printf("Number of Pages: %d\n", lib[k].no_of_pages);
+                        printf("Cost: $%.2f\n", lib[k].cost);
+                    }
+                }
+                break;
+            case 3:
+                printf("\nTotal number of books in the library: %d\n", count);
+                break;
+            case 4:
+                printf("\nUpdate functionality not implemented yet.\n");
+                break;
+            case 5:
+                exit(0);
+            default:
+                printf("\nInvalid number entered\n");
+        }
+    }
+
+    return 0;
+}
